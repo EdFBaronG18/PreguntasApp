@@ -32,11 +32,11 @@ export class PreguntasService {
     this.fail++;
   }
 
-  getWin() {
+  getWin(): number {
     return this.win;
   }
 
-  getFail() {
+  getFail(): number {
     return this.fail;
   }
 }

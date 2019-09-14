@@ -1,4 +1,15 @@
-
 <ion-content>
-
+  <div *ngFor="let pregunta of preguntas; let i = index">
+  <ion-card [hidden]="checked[i]">
+    <ion-card-header>
+      <ion-card-subtitle>Pregunta {{i+1}}</ion-card-subtitle>
+      <ion-card-title>{{pregunta.question}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngFor="let boton of respuestas[i]">
+      <ion-button fill="solid" shape="round" (click)="validate(boton, i)">
+        {{boton}}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</div>
 </ion-content>

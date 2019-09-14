@@ -1,3 +1,9 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bien: {{win}} | Mal: {{fail}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div *ngFor="let pregunta of preguntas; let i = index">
   <ion-card [hidden]="checked[i]">

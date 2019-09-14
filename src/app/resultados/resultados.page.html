@@ -1,4 +1,12 @@
 
 <ion-content>
 
+    <ion-text color="primary">
+        <h1>Ganaste: {{win}}</h1>
+        <h1>Perdiste: {{fail}}</h1>
+    </ion-text>
+
+    <ion-button routerLink="/home" (click)="restart()">
+       Restart
+    </ion-button>
 </ion-content>

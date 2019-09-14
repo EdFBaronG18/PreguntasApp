@@ -24,6 +24,33 @@ export class PreguntasPage implements OnInit {
     this.fail = 0;
   }
 
+  ionViewWillEnter() {
+    this.checked = [];
+    this.checked.fill(false);
+    this.win = 0;
+    this.fail = 0;
+  }
+
+  ionViewDidLeave() {
+    this.checked = [];
+    this.checked.fill(false);
+    this.win = 0;
+    this.fail = 0;
+  }
+
+  ionViewWillLeave() {
+    this.checked = [];
+    this.checked.fill(false);
+    this.win = 0;
+    this.fail = 0;
+  }
+  ionViewDidEnter() {
+    this.checked = [];
+    this.checked.fill(false);
+    this.win = 0;
+    this.fail = 0;
+  }
+
   ngOnInit() {
     this.respuestas = [];
     this.preguntas = this.service.getJSON();
@@ -36,13 +63,17 @@ export class PreguntasPage implements OnInit {
   pushRespuestas(num: number) {
     this.respuestas[num] = this.preguntas[num].incorrect_answers;
     this.respuestas[num].push(this.preguntas[num].correct_answer);
+
+    this.shuffle(this.respuestas[num]);
     console.log(this.respuestas[num]);
   }
 
+
   validate(res, i) {
-    if (res === this.respuestas[i][3]) {
+    const tam = this.respuestas[i].length;
+    console.log(tam);
+    if (res === this.preguntas[i].correct_answer) {
       this.service.addWin();
-      console.log(res, this.respuestas[i][3]);
     } else {
       this.service.addFail();
     }
@@ -59,4 +90,10 @@ export class PreguntasPage implements OnInit {
       return this.router.navigateByUrl('/resultados');
     }
   }
+
+  shuffle(arreglo) {
+    arreglo.sort(() => Math.random() - 0.5);
+  }
 }
+
+
